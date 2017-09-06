@@ -23,15 +23,47 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+        <init-param>
+            <param-name>exclusions</param-name>
+            <param-value>/static/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+  
+	  <filter>    
+	    <filter-name>shiroFilter</filter-name>    
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>    
+	    <init-param>  
+            <!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->  
+            <param-name>targetFilterLifecycle</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+	  </filter>
+	  <filter-mapping>    
+	    <filter-name>shiroFilter</filter-name>    
+	    <url-pattern>/*</url-pattern>    
+	  </filter-mapping>
+  
+	<!-- 防止Spring内存溢出监听器 -->
+	<!-- 防止发生java.beans.Introspector内存泄露,应将它配置在ContextLoaderListener的前面 -->  
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
 	<!-- Spring监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!-- 防止Spring内存溢出监听器 -->
-	<listener>
-		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-	</listener>
-  <!-- Spring MVC servlet -->  
+	
+    <!-- Spring MVC servlet -->  
+    <!-- SpringMVC核心分发器 -->  
     <servlet>  
         <servlet-name>SpringMVC</servlet-name>  
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
@@ -47,8 +79,34 @@
         <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->  
         <url-pattern>/</url-pattern>  
     </servlet-mapping>  
+     <!-- druid监控 -->
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>
     
     <welcome-file-list>  
         <welcome-file>/index.jsp</welcome-file>  
-    </welcome-file-list>  
+    </welcome-file-list>
+    
+    <error-page>  
+        <error-code>404</error-code>  
+        <location>/WEB-INF/error_404.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>405</error-code>  
+        <location>/WEB-INF/error_405.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>500</error-code>  
+        <location>/WEB-INF/error_500.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <exception-type>java.lang.Throwable</exception-type>  
+        <location>/WEB-INF/error_500.jsp</location>  
+    </error-page>    
 </web-app>

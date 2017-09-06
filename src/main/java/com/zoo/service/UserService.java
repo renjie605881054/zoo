@@ -4,5 +4,5 @@ import com.zoo.pojo.User;
 
 public interface UserService {
 
-	public User getUserById(int userId);
+	public User getUserById(String userId);
 }

@@ -1,5 +1,7 @@
 package com.zoo.pojo;
 
+import java.util.List;
+
 public class User {
 	
 	private String userId;
@@ -7,6 +9,7 @@ public class User {
 	private String email;
 	private String password;
 
+	private List<String> roleList;
 	
 	public User(){}
 	
@@ -43,6 +46,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<String> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(List<String> roleList) {
+		this.roleList = roleList;
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 	@Resource
 	private UserDao userDao;
 	
-	public User getUserById(int userId) {
+	public User getUserById(String userId) {
 		return userDao.getUserById(userId);
 	}
 

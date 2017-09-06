@@ -1,5 +1,6 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>views index</h2>
+<a href="./user/info">gogo</a>
 </body>
 </html>
