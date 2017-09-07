@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my User page.${user } <br>
+    This is Test User page.${user } <br>
   </body>
 </html>

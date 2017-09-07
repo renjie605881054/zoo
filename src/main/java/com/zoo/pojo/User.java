@@ -2,8 +2,11 @@ package com.zoo.pojo;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 public class User {
 	
+	@NotNull
 	private String userId;
 	private String userName;
 	private String email;

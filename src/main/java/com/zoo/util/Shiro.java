@@ -29,7 +29,7 @@ public class Shiro extends AuthorizingRealm{
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection pincipalCollection) {
-		String loginUserId = (String)pincipalCollection.fromRealm(getName()).iterator().next();
+		/*String loginUserId = (String)pincipalCollection.fromRealm(getName()).iterator().next();
 		User user = userService.getUserById(loginUserId);
 		//获取用户的角色名称
 		List<String> roleList = new ArrayList<String>(){
@@ -52,7 +52,7 @@ public class Shiro extends AuthorizingRealm{
 			}
 			return info;
 		}
-		
+		*/
 		return null;
 	}
 
@@ -61,14 +61,15 @@ public class Shiro extends AuthorizingRealm{
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-		UsernamePasswordToken token=(UsernamePasswordToken) authenticationToken;  
+		/*UsernamePasswordToken token=(UsernamePasswordToken) authenticationToken;  
 		
 		User user = userService.getUserById(token.getUsername());
 		if(user != null){
 			//保存用户登录信息到认证中
             return new SimpleAuthenticationInfo(user.getUserId(), user.getPassword(), getName());  
-		}
+		}*/
 		return null;
 	}
+	
 	
 }

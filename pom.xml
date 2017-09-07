@@ -1,12 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.people</groupId>
+  <groupId>com.zoo</groupId>
   <artifactId>zoo</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <name>zoo Maven Webapp</name>
-  <url>http://maven.apache.org</url>
   
    <properties>
 	<spring.version>4.0.2.RELEASE</spring.version>
@@ -14,6 +12,9 @@
 	<!-- log4j日志文件管理包版本 -->  
     <slf4j.version>1.7.7</slf4j.version>  
     <log4j.version>1.2.17</log4j.version> 
+    
+    <validation.api.version>2.0.0.Alpha1</validation.api.version>
+    <validation.version>6.0.0.Beta2</validation.version>
   </properties>
   
   <dependencies>
@@ -185,7 +186,35 @@
 		    <artifactId>shiro-spring</artifactId>
 		    <version>1.4.0</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.apache.bval</groupId>
+			<artifactId>bval-jsr303</artifactId>
+			<version>0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zoo</groupId>
+			<artifactId>zoo-back</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<!-- <dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>${validation.api.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>${validation.version}</version>
+		</dependency>
+		<dependency>
+	      <groupId>net.sf.ehcache</groupId>
+	      <artifactId>ehcache-core</artifactId>
+	      <version>2.6.9</version>
+	    </dependency>
+	   <dependency>
+	     <groupId>org.apache.shiro</groupId>
+	     <artifactId>shiro-ehcache</artifactId>
+	     <version>1.2.3</version>
+	   </dependency> -->
   </dependencies>
-  
 </project>
